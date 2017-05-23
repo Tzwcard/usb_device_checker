@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
 {
 	bool is_exist = false;
 
-	int vid = -1, pid = -1;
+	long vid = -1, pid = -1;
 	for (int i = 1; i < argc; i++)
 	{
 		if (strcmp(argv[i], "-vid") == 0 && i + 1 < argc)
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 			pid = str_to_val(argv[++i]);
 	}
 
-	if (vid == -1 || pid == -1)
+	if (vid == -1 || pid == -1 || vid > 0xffff || pid > 0xffff)
 	{
 		MessageBox(NULL, "incorrect vid/pid", "error", 0);
 		return -1;
